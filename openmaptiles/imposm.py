@@ -4,7 +4,9 @@ from .tileset import Tileset
 
 def zres(pixel_scale, zoom):
     # See https://github.com/openmaptiles/postgis-vt-util/blob/master/src/ZRes.sql
-    return 40075016.6855785 / ((1.0 * float(pixel_scale)) * 2 ** float(zoom))
+    geom_simple = 4
+    vector_size = 4096
+    return 40075016.6855785 / ((1.0 * float(pixel_scale)) * 2 ** float(zoom)) * (geom_simple / float(vector_size) * float(pixel_scale))
 
 
 def call_zres(pixel_scale, match):

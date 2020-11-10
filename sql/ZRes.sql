@@ -20,13 +20,13 @@ DELETE FROM water_polygons WHERE sqrt(ST_Area(geom)) < ZRes(10);
 UPDATE water_polygons SET geom = ST_Simplify(geom, ZRes(10));
 ```
 ******************************************************************************/
-create or replace function ZRes (z integer)
+create or replace function ZResTest (z integer)
     returns float
     returns null on null input
     language sql immutable
     parallel safe as
 $func$
-select (40075016.6855785/(256*2^z));
+select ((40075016.6855785/(256*2^z))*(4.0/4096*256));
 $func$;
 
 create or replace function ZRes (z float)
@@ -35,7 +35,7 @@ create or replace function ZRes (z float)
     language sql immutable
     parallel safe as
 $func$
-select (40075016.6855785/(256*2^z));
+select ((40075016.6855785/(256*2^z))*(4.0/4096*256));
 $func$;
 
 
