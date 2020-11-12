@@ -26,7 +26,7 @@ create or replace function ZResTest (z integer)
     language sql immutable
     parallel safe as
 $func$
-select ((40075016.6855785/(256*2^z))*(4.0/4096*256));
+select ((40075016.6855785/(256*2^z))/(4.0/4096*256));
 $func$;
 
 create or replace function ZRes (z float)
@@ -35,7 +35,7 @@ create or replace function ZRes (z float)
     language sql immutable
     parallel safe as
 $func$
-select ((40075016.6855785/(256*2^z))*(4.0/4096*256));
+select ((40075016.6855785/(256*2^z))/(4.0/4096*256));
 $func$;
 
 
